@@ -1,2 +1,2 @@
-# Distorsio
+# Distorsi
 Django based blog website
