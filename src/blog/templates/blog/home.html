@@ -3,7 +3,7 @@
   <!-- Main Featured -->
   <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
-      <h1 class="display-3 fst-italic">{{ featured_main.title }}</h1>
+      <h1 class="display-4 fst-italic">{{ featured_main.title }}</h1>
       <h2 class=" fst-italic">{{ featured_main.subtitle }}</h2>
       <p class="lead my-3">{{ featured_main.content | slice:"4:147" }}</p>
       <p class="lead mb-0"><a href="{% url 'post-detail' pk=featured_main.pk %}" class="text-white fw-bold">Continue reading...</a></p>

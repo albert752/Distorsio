@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from .models import Post
 
 

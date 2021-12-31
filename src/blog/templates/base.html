@@ -54,7 +54,7 @@
     <link href="{% static 'blog/css/blog.css' %}" rel="stylesheet">
   </head>
   <body>
-<header class="blog-header py-4">
+<header class="blog-header py-5">
   <div class="row flex-nowrap justify-content-between align-items-center">
     <div class="col text-center">
       <a class="blog-header-logo text-light" href="{% url 'home' %}">Distorsió</a> <br>
@@ -90,7 +90,7 @@
         Col·labora
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Com enviar articles i escrits</a></li>
+        <li><a class="dropdown-item" href="{% url 'howto-text' %}">Com enviar articles i escrits</a></li>
         <li><a class="dropdown-item" href="#">Com enviar dibuixos i còmics</a></li>
       </ul>
     </li>
