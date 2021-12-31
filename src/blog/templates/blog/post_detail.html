@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
-      <article class="blog-post pt-5">
+      <article class="blog-post">
         <h2 class="blog-post-title">{{ object.title }}</h2>
         <h3 class="blog-post-subtitle">{{ object.subtitle }}</h3>
         <p class="blog-post-meta">
-          Creat el {{ object.published_date }} per <a href="#">Mark</a><br>
-          Última modificació el {{ object.last_edit_date }} per <a href="#">Mark</a>
+          Creat el {{ object.published_date }} per <a href="#">{{ object.author.username }}</a><br>
+          Última modificació el {{ object.last_edit_date }} per <a href="#">{{ object.author.username }}</a>
         </p>
         <div class="blog-post-content">
           {{ object.content|safe }}

@@ -8,12 +8,16 @@
   font-family: "Swis721BlkExBT";
   font-size: 4.25rem;
   text-decoration: none;
+  text-shadow: 2px 2px #222222;
+
 }
 
 .blog-sub-header-logo {
   font-family: "Swis721BlkExBT";
   font-size: 1.25rem;
   text-decoration: none;
+  text-shadow: 2px 2px #222222;
+
 }
 
 .blog-header-logo:hover {
@@ -33,29 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
 
-.nav-scroller .nav {
-  display: flex;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-
-.nav-scroller .nav-link {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: .875rem;
-}
 
 .card-img-right {
   height: 100%;
@@ -70,6 +52,26 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 768px) {
   .h-md-250 { height: 250px; }
 }
+
+/* Nav bar*/
+.nav {
+  margin: 1rem;
+  font-size: 1.25rem;
+  font-weight: bolder;
+}
+
+.nav-link {
+  color: #222222;
+}
+
+.nav-link:hover {
+  color: green;
+}
+
+.nav-link:active {
+  color: green;
+}
+
 
 /* Pagination */
 .blog-pagination {

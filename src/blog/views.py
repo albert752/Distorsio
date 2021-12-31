@@ -13,5 +13,6 @@ class HomeTemplateView(ListView):
         context['featured_right'] = context['object_list'][len(context['object_list'])-3]
         return context
 
+
 class PostDetailView(DetailView):
     model = Post
