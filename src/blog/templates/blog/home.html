@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block precontent %}
+  <!-- Main Featured -->
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-3 fst-italic">{{ featured_main.title }}</h1>
+      <h2 class=" fst-italic">{{ featured_main.subtitle }}</h2>
+      <p class="lead my-3">{{ featured_main.content | slice:"4:147" }}</p>
+      <p class="lead mb-0"><a href="{% url 'post-detail' pk=featured_main.pk %}" class="text-white fw-bold">Continue reading...</a></p>
+    </div>
+  </div>
+  <!-- End Main Featured -->
+
+  <!-- Left and Right Featured -->
+  <div class="row mb-2">
+
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">{{ featured_left.title }}</h3>
+          <div class="mb-1 text-muted">{{ featured_left.published_date }}</div>
+          <p class="card-text mb-auto">{{ featured_left.content | slice:"4:95" }}</p>
+          <a href="{% url 'post-detail' pk=featured_left.pk %}" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">{{ featured_right.title }}</h3>
+          <div class="mb-1 text-muted">{{ featured_right.published_date }}</div>
+          <p class="card-text mb-auto">{{ featured_right.content | slice:"4:95" }}</p>
+          <a href="{% url 'post-detail' pk=featured_right.pk %}" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End and Right Featured -->
+  {% endblock %}
+  {% block content %}
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        From the Firehose
+      </h3>
+      {% for object in object_list %}
+        <article class="blog-post pt-3 border-bottom">
+          <h2 class="blog-post-title">{{ object.title }}</h2>
+          <h3 class="blog-post-subtitle">{{ object.subtitle }}</h3>
+          <p class="blog-post-meta">
+            Creat el {{ object.published_date }} per <a href="#">Mark</a><br>
+            Última modificació el {{ object.last_edit_date }} per <a href="#">Mark</a>
+          </p>
+          <div class="blog-post-content">
+            {{ object.content|safe }}
+          </div>
+        </article>
+      {% endfor %}
+
+      <nav class="blog-pagination" aria-label="Pagination">
+        <a class="btn btn-outline-primary" href="#">Older</a>
+        <a class="btn btn-outline-secondary disabled">Newer</a>
+      </nav>
+
+{% endblock %}
