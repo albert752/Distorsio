@@ -14,10 +14,14 @@ class Subject(models.Model):
     name = models.CharField(max_length=200, verbose_name='nom')
     acronym = models.CharField(max_length=200, verbose_name='sigles')
 
+    def __str__(self):
+        return f'{self.name} ({self.acronym})'
+
 
 class Bocamoll(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, verbose_name='professor')
-    subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, verbose_name='subject')
+    subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, verbose_name='assignatura')
     text = models.TextField(verbose_name='text')
     date = models.DateField(default=timezone.now, verbose_name='data')
-    aproved = models.FloatField(default=False, verbose_name='estat')
+    creation = models.DateTimeField(default=timezone.now)
+    approved = models.BooleanField(default=False, verbose_name="Estat d'aprovació")

@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+
+{% block precontent %}
+    <img src="{{ object.cover.url }}" class="w-100 pb-5">
+{% endblock %}
+
 {% block content %}
 
       <article class="blog-post">

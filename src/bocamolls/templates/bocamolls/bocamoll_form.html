@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block precontent %}
+<h1>Envia'ns un bocamoll!</h1>
+<p>
+  Un bocamoll és una frase divertida que ha dit un professor. Amb cada número de Distorsió publiquem una recopilació de
+  les millors frases de professors que ens fan arribar els estudiants. Ens pots fer arribar bocamolls a travès de Twitter,
+  Facebook, WhatsApp o el nostre correu electrònic, els trobaràs a l’apartat “Contacte”, dintre de “Informació” a la
+  barra superior. D’altra banda, també ens pots fer arribar bocamolls a través d’aquesta pàgina, al requadre inferior.
+</p>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.media }}
+  {{ form|crispy }}
+  <input class="btn btn-success w-100" type="submit" value="Envia!">
+</form>
+
+
+{% endblock %}

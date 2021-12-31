@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
+{% block precontent %}
+  <h1>Bocamolls</h1>
+  <p>
+    Un bocamoll és una frase divertida que ha dit un professor. Amb cada número de Distorsió publiquem una recopilació de
+    les millors frases de professors que ens fan arribar els estudiants. Ens pots fer arribar bocamolls a travès de Twitter,
+    Facebook, WhatsApp o el nostre correu electrònic, els trobaràs a l’apartat “Contacte”, dintre de “Informació” a la
+    barra superior. D’altra banda, també ens pots fer arribar bocamolls a través d’aquesta pàgina, al requadre inferior.
+  </p>
+{% endblock %}
+
 {% block content %}
 
 <div class="card">
@@ -22,24 +32,19 @@
 </div>
 <hr>
 <div class="row">
-{% for post in object_list %}
+{% for bocamoll in object_list %}
   <div class="col">
     <!-- Begin Cascade Post card -->
     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <div class="col p-4 d-flex flex-column position-static">
-        <strong class="d-inline-block mb-2 text-success">{{ post.category }}</strong>
-        <h3 class="mb-0">{{ post.title }}</h3>
-        <div class="mb-1 text-muted">{{ post.published_date }}</div>
-        <p class="card-text mb-auto">{{ post.content | slice:"4:95" }}</p>
-        <a href="{% url 'post-detail' pk=post.pk %}" class="stretched-link">Continue reading</a>
-      </div>
-      <div class="col-auto d-none d-lg-block">
-        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        <strong class="d-inline-block mb-2 text-success">{{ bocamoll.subject }}</strong>
+        <h3 class="mb-3">{{ bocamoll.text }}</h3>
+        <div class="mb-1 text-muted">{{ bocamoll.professor }} el {{ bocamoll.date }}</div>
       </div>
     </div>
     <!-- End Begin Cascade Post card -->
     </div>
-  {% if forloop.counter|divisibleby:1 %}
+  {% if forloop.counter|divisibleby:2 %}
   </div>
   <div class="row">
   {% endif %}

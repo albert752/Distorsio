@@ -24,6 +24,7 @@ class PostFilterView(FilterView):
     model = Post
     filterset_class = PostFilter
     paginate_by = 5
+    ordering = ['-published_date']
 
 
 class CategoryDetailView(DetailView):

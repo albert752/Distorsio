@@ -47,8 +47,7 @@ INSTALLED_APPS = [
     'django_filters',
     'blog',
     'info',
-    'bocamolls'
-
+    'bocamolls',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'blog.context_processors.archives',
                 'blog.context_processors.categories',
+                'bocamolls.context_processors.bocamoll',
             ],
         },
     },
@@ -126,11 +126,15 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# Static and Media files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
