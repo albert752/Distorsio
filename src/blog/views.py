@@ -1,5 +1,7 @@
 from django.views.generic import ListView, DetailView, TemplateView
-from .models import Post
+from django_filters.views import FilterView
+from .models import Post, Category
+from .filters import PostFilter
 
 
 class HomeTemplateView(ListView):
@@ -16,3 +18,13 @@ class HomeTemplateView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
+
+
+class PostFilterView(FilterView):
+    model = Post
+    filterset_class = PostFilter
+    paginate_by = 5
+
+
+class CategoryDetailView(DetailView):
+    model = Category

@@ -17,7 +17,7 @@
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <strong class="d-inline-block mb-2 text-success">{{ featured_left.category }}</strong>
           <h3 class="mb-0">{{ featured_left.title }}</h3>
           <div class="mb-1 text-muted">{{ featured_left.published_date }}</div>
           <p class="card-text mb-auto">{{ featured_left.content | slice:"4:95" }}</p>
@@ -33,7 +33,7 @@
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <strong class="d-inline-block mb-2 text-success">{{ featured_right.category }}</strong>
           <h3 class="mb-0">{{ featured_right.title }}</h3>
           <div class="mb-1 text-muted">{{ featured_right.published_date }}</div>
           <p class="card-text mb-auto">{{ featured_right.content | slice:"4:95" }}</p>

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-body pb-0">
+    <form method="get">
+      <div class="row">
+      {% for field in filter.form %}
+        <div class="col">
+          {{ field|as_crispy_field }}
+        </div>
+
+      {% endfor %}
+        <div class="col">
+          <button class="btn btn-outline-secondary" type="submit">Filtra</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<hr>
+<div class="row">
+{% for post in object_list %}
+  <div class="col">
+    <!-- Begin Cascade Post card -->
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-success">{{ post.category }}</strong>
+        <h3 class="mb-0">{{ post.title }}</h3>
+        <div class="mb-1 text-muted">{{ post.published_date }}</div>
+        <p class="card-text mb-auto">{{ post.content | slice:"4:95" }}</p>
+        <a href="{% url 'post-detail' pk=post.pk %}" class="stretched-link">Continue reading</a>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+      </div>
+    </div>
+    <!-- End Begin Cascade Post card -->
+    </div>
+  {% if forloop.counter|divisibleby:1 %}
+  </div>
+  <div class="row">
+  {% endif %}
+{% endfor %}
+</div>
+
+<div class="paginator">
+  {% if is_paginated %}
+    {% if page_obj.has_previous %}
+      <a class="paginator-text" href="?page=1">Primera</a>
+      <a href="?page={{ page_obj.previous_page_number }}"> ☚ </a>
+    {% endif %}
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <a href="?page={{ num }}" class="current-page"> {{ num }} </a>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a href="?page={{ num }}">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}"> ☛ </a>
+      <a class="paginator-text" href="?page={{ page_obj.paginator.num_pages }}">Última</a>
+    {% endif %}
+  {% endif %}
+</div>
+{% endblock %}

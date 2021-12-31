@@ -64,15 +64,26 @@
 </header>
 <div class="container">
   <ul class="nav nav-pills flex-column flex-sm-row ">
+
     <li class="flex-sm-fill  nav-item">
       <a class="nav-link" href="{% url 'home' %}">Inici</a>
     </li>
+
     <li class="flex-sm-fill  nav-item">
-      <a class="nav-link" href="#">Articles</a>
+      <a class="nav-link" href="{% url 'post-filter' %}">Articles</a>
     </li>
-    <li class="flex-sm-fill  nav-item">
-      <a class="nav-link disabled" href="#">Categories</a>
+
+    <li class="flex-sm-fill  nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+        Categories
+      </a>
+      <ul class="dropdown-menu">
+        {% for category in categories %}
+          <li><a class="dropdown-item" href="{% url 'category-detail' category.pk %}">{{ category.name }}</a></li>
+        {% endfor %}
+      </ul>
     </li>
+
     <li class="flex-sm-fill  nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
         Informació

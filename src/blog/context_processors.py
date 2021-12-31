@@ -1,5 +1,9 @@
 from django.contrib.auth.models import User
-from .models import Post
+from .models import Category, Post
+
+
+def categories(request):
+    return {'categories': Category.objects.all()}
 
 
 def archives(request):

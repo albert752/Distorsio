@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block precontent %}
+ <h1>{{ object.name }}</h1>
+<p>
+   {{ object.description }}
+</p>
+{% endblock %}
+{% block content %}
+      <hr>
+      {% for object in category.post_set.all %}
+        <article class="blog-post pt-3 border-bottom">
+          <h2 class="blog-post-title">{{ object.title }}</h2>
+          <h3 class="blog-post-subtitle">{{ object.subtitle }}</h3>
+          <p class="blog-post-meta">
+            Creat el {{ object.published_date }} per <a href="#">Mark</a><br>
+            Última modificació el {{ object.last_edit_date }} per <a href="#">Mark</a>
+          </p>
+          <div class="blog-post-content pb-3">
+            <p class="mb-0"> {{ object.content|slice:"4:250" }} </p>
+            <p class="mb-0"> <a href="{% url 'post-detail' pk=object.pk %}" class=" fw-bold">Continua</a></p>
+          </div>
+        </article>
+      {% endfor %}
+
+      <nav class="blog-pagination" aria-label="Pagination">
+        <a class="btn btn-outline-primary" href="#">Older</a>
+        <a class="btn btn-outline-secondary disabled">Newer</a>
+      </nav>
+
+{% endblock %}
